@@ -20,20 +20,13 @@ import json
 import os
 from typing import Dict, List, Any
 import pandas as pd
-
-#ANCIEN CODE
-# import elab_bridge
-# from elab_bridge import server_interface
-
-#import présent dans la fonction server_interface.py que j'ai récupéré 
 import elabapi_python
 
-#la fonction principale récupérée de server_interface
 def extended_download(save_to, server_config_json, experiment_tags=None,
                       format='csv', experiment_axis='columns'):
     """
     Download experiments based on tags or a specific experiment by ID.
-
+    Existing function that has been retrieved from "DigLabTools" repository, at "elab_bridge/server_interface.py"
     Parameters
     ----------
     save_to: str
@@ -106,10 +99,11 @@ def extended_download(save_to, server_config_json, experiment_tags=None,
     return downloaded_experiments
 
 
-#fonction récupérée de server_interface.py pour faire fonctionner extended download
 def get_elab_config(server_config_json):
     """
     Initialize an elab project based on the provided server configuration
+    Existing function that has been retrieved from "DigLabTools" repository, at "elab_bridge/server_interface.py"
+    Used to make extended_download works
     :param server_config_json: json file containing the api_token and api_url
     :return: elab api client
     """
@@ -155,9 +149,7 @@ def get_experiement_details(config_file_path: str, metada_file_path: str, tag: s
 
 
     """
-
-    #ANCIEN CODE
-    # experiement_details = elab_bridge.server_interface.extended_download(
+    
     experiement_details = extended_download(
         metada_file_path,
         config_file_path,
